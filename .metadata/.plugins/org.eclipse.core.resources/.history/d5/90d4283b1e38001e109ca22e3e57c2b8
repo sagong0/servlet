@@ -1,0 +1,46 @@
+package example;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Enumeration;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/insert")
+public class insert extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    public insert() {
+        super();
+    }
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		
+		// name 값이 1개이상 동일한 사항일 경우 getParameterValues 메소드로 받아서 처리합니다.!!!!!
+		String user[] = request.getParameterValues("user");
+		//System.out.println(Arrays.toString(user));
+		ArrayList<String> userArr = new ArrayList<String>(Arrays.asList(user));
+		
+		ArrayList<String> newUser = new ArrayList<String>();
+		
+		System.out.println(userArr);
+		
+		for(int i = 0; i < userArr.size(); i++) {
+			if(userArr.get(i) == "") {
+				// 아무것도 입력안했을때
+				userArr.remove(i);
+			}else {
+				// 하나라도 입력 했을 떄 이곳으로
+				newUser.add(userArr.get(i));
+				System.out.println(userArr.get(i));
+			}
+		}
+	}
+
+}

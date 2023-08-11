@@ -1,0 +1,29 @@
+package array_test;
+
+// 2차 배열
+
+public class array6 {
+
+	public static void main(String[] args) {
+		new array6().test6();
+	}
+	public void test6() {
+		String member[][] = {
+				{"박초롬","윤보미","정은지","김남주","오하영"},
+				{"31","29","33","31","32"}
+		};
+		int ea = member.length;
+		System.out.println(ea);
+		int data_ea = member[0].length;
+		System.out.println(data_ea);
+		
+		int f,ff;
+		for(f=0; f < ea; f++) {		//2
+			
+			for(ff=0; ff<data_ea; f++) {
+				System.out.println(member[f][ff]);
+			}
+		}
+		
+	}
+}

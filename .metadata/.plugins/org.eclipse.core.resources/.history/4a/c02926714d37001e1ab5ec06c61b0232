@@ -1,0 +1,38 @@
+package array_test;
+
+import java.util.Arrays;
+
+// 2차 배열을 1차 배열로 합산
+public class array7 {
+
+	public static void main(String[] args) {
+		new array7().test();
+	}
+	
+	public void test() {
+		int a[][] = {
+				{1,3,5,7},
+				{2,4,6,8},
+				{2,4,6,8}
+		};
+		
+		int ea1 = a.length;	//2
+		int ea2 = a[0].length;	//4
+		int make = ea1 * ea2;	//8
+		int b[] = new int[make];
+		
+		int ct = 0;	
+		int f,ff;
+		for(f=0;f<ea1;f++) {		//2
+			System.out.println(f);
+			for(ff=0;ff<ea2;ff++) {
+				b[ct] = a[f][ff];
+				ct++;
+				//System.out.println(a[f][ff]);				
+			}	
+		}
+		
+		//System.out.println(Arrays.toString(b));
+	}
+
+}

@@ -1,0 +1,18 @@
+package array_test;
+
+import java.util.ArrayList;
+
+// ArrayList 배열구조
+public class array8 {
+
+	public static void main(String[] args) {
+		new array8().test();
+	}
+	public void test() {
+		String member[] = {"이순신","홍길동","유관순","강감찬"};
+		ArrayList<String> ar = new ArrayList<String>();
+		// 클래스형태라 lengh 대신 size
+		System.out.println(ar.size());
+	}
+
+}

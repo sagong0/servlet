@@ -1,0 +1,10 @@
+package array_test;
+
+// 원시배열 형태 (checkbox, radio button => 원시배열?)
+public class array1 {
+
+	public static void main(String[] args) {
+		// String, int, Object
+		
+	}
+}

@@ -1,0 +1,17 @@
+package array_test;
+
+// 원시배열 형태 (checkbox, radio button => 원시배열?)
+public class array1 {
+
+	public static void main(String[] args) {
+		// String, int, Object
+		int a[] = new int[5];
+		a[0] = 1;
+		a[1] = 2;
+		a[2] = 3;
+		a[3] = 4;
+		int ea = a.length;
+		System.out.println(ea);
+		
+	}
+}

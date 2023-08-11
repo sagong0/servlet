@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열구조 생성법 및 콘솔출력 1</title>
+</head>
+<body>
+<input type="button" value="배열1" onclick="aaa()">
+<input type="button" value="배열2" onclick="bbb()">
+<input type="button" value="배열3" onclick="ccc()">
+
+<div id="box"></div>
+<script>
+	var html = document.getElementById("box");
+	function aaa(){
+		// {} 배열 구조는 대표키가 있으며, 단 대표키는 중복X.
+		var data = {
+			"myinfo1":["홍길동","25","hong@nate.com"],
+			"myinfo2":["김유신","30","kim@nate.com"]
+		};
+		console.log(data);
+	}
+	function bbb(){
+		var data = {
+			"myinfo" : [
+			{
+				"id": "hong",
+				"name":"홍길동",
+				"age" : "25"
+			},
+			{
+				"id": "kim",
+				"name":"kim길동",
+				"age" : "30"
+			}
+			]
+		}
+		console.log(data)
+	}
+	function ccc(){
+		
+	}
+	
+</script>
+
+</body>
+</html>

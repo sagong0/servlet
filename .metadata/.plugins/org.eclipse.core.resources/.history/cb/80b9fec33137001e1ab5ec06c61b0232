@@ -1,0 +1,11 @@
+package array_test;
+
+// 1차배열 중 필요한 데이터만 추출하여 신규 배열로 커스텀
+public class array4 {
+
+	public static void main(String[] args) {
+		
+	}
+
+	public void test2() {}
+}

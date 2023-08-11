@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Servlet 1일차 - POST, GET 전송방식</title>
+</head>
+<body>
+	<form id="f" method="get" action="">
+		데이터 전송값 : <input type="text"><br>
+		<input type="button" value="전송">
+		
+	</form>
+</body>
+</html>

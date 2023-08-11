@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Servlet 1일차 - 로그인 페이지</title>
+</head>
+<body>
+
+아이디 : <input type="text"><br/>
+패스워드 : <input type="password"><br/>
+<input type="button" value="Login">
+
+</body>
+</html>

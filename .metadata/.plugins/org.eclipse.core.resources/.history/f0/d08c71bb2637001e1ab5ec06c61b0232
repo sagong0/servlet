@@ -1,0 +1,28 @@
+package array_test;
+
+// 원시배열 + 조건문 + 반복분 
+public class array2 {
+
+	public static void main(String[] args) {
+		array2 ar = new array2();
+		ar.test();
+		
+		//new array2().test();
+	}
+
+	public void test() {
+		String id[] = {"hong","kim","park","lee","jang","so"};
+		// 힌트
+		int word = id[0].length();
+		System.out.println(word);
+		/**
+		 * 응용문제 1) 
+		 * 해당 사용자 아이디 배열값 중 아이디가 3자리 이하의 사용자만 출력하시요.
+		 **/
+		for(int i = 0; i< id.length; i++) {
+				if(id[i].length() <=3) {
+					System.out.println(id[i]);
+				}
+			}
+		}
+}

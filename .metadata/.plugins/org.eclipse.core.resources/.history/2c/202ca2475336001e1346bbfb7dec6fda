@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lotto</title>
+</head>
+<body>
+	
+	
+	<form id="f" method="POST" action="./lotto_ok.do">
+		number1 : <input type="number" name="no" id="no0" class="no"><br/>
+		number2 : <input type="number" name="no" id="no1" class="no"><br/>
+		number3 : <input type="number" name="no" id="no2" class="no"><br/>
+		number4 : <input type="number" name="no" id="no3" class="no"><br/>
+		number5 : <input type="number" name="no" id="no4" class="no"><br/>
+		number6 : <input type="number" name="no" id="no5" class="no"><br/>
+		<input type="button" value="전송" onclick="abc()">
+	</form>
+	
+	<script>
+		function abc(){
+			
+			// class 형태 ! 
+			var ea = document.getElementsByClassName("no");	 // 같은 class 를 모두 가져옴
+			//console.log(ea.length);
+			var w = 0;
+			while(w <= ea){
+				var nm = document.getElementsByName("no")[w]; 
+				
+				if(f.nm.value ==""){
+					alert("숫자값을 모두 입력해주세요.");
+					break;
+				}
+				w++;
+			}
+			
+			
+			
+			// id 형태의 js
+			/*
+			var w = 0;
+			while(w < 6){
+				var ids = document.getElementById("no" + w)
+				if(ids.value==""){
+					alert("숫자값을 모두 입력해 주세요.");
+					ids.focus();
+					break;
+				}
+				
+				w++;
+			}
+			*/
+			
+			//f.submit();
+			
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+package web;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/cal")
+public class cal extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    public cal() {
+        super();
+    }
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String a = request.getParameter("data1");
+		String b = request.getParameter("data2");
+		
+		index in = new index();
+		// 문자값을 문자 메소드로 전달 -> 최종 결과값을 문자로 받음.
+		//String result = in.test(a,b);
+		
+		// 문자값을 숫자로 변환 후 -> Module로 값을 전달 후 결과값을 문자로 받는 형태
+		int aa = Integer.parseInt(a);
+		int bb = Integer.parseInt(b);
+		String result = in.test2(aa, bb);
+		
+//		System.out.println(result);
+	}
+	
+	
+	
+	
+}

@@ -1,0 +1,13 @@
+package array_test;
+
+// sort
+public class array5 {
+
+	public static void main(String[] args) {
+		new array5().test();
+	}
+
+	public void test() {
+		int a[] = {10,2,6,9,20,11};
+	}
+}

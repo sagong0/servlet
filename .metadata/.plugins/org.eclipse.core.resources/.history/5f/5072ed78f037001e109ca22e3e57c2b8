@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>example</display-name>
+  
+  <servlet>
+  	<servlet-name>login</servlet-name> <!-- 가상으로 사용하는 이름(중복X)  -->
+  	<servlet-class>example.controller</servlet-class>  <!-- 컨트롤 지정 -->
+  </servlet>
+  <!-- mapping이란 : java controller 가상의 웹주소를 설정하는 공간 -->
+  <servlet-mapping>
+  	<servlet-name>search</servlet-name>
+  	<url-pattern>/loginok.do</url-pattern> <!-- 같은 주소 사용 금지 또한 / 기준이필요함 (front에서 보낼곳 정해줌,백엔드 이걸로받을거야)-->
+  </servlet-mapping>
+</web-app>
