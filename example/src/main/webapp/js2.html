@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트 - 이벤트 핸들링 기초</title>
+</head>
+<body>
+	이메일 : <input type="text" id="email"/>
+	<!-- onchange : 사용자가 선택 또는 값이 변화 되었을 때 적용되는 이벤트 -->
+	<select id="email2" onchange="abc(this.value)">
+		<option value="">직접입력</option>
+		<option value="naver.com">네이버</option>
+		<option value="nate.com">네이트</option>
+		<option value="gmail.com">구글</option>
+	</select>
+	<br/><br/>
+	<input type="hidden" id="money" value="10000"/>
+	수량 : <select id="ea" onchange="bbb(this.value)">
+		<option value="1">1EA</option>
+		<option value="2">2EA</option>
+		<option value="3">3EA</option>
+	</select>
+	<br/>
+	최종가격 : <div id="total">10000</div>
+</body>
+
+<script>
+	
+	function abc(e){	// 이벤트 핸들링 함수.
+		//console.log(e);
+		var email = document.getElementById("email")
+		email.value = e;
+	}
+	function bbb(z){
+		var aa = document.getElementById("money").value;	// 1개당 실제가격
+		var bb = document.getElementById("total");
+		var sum = Number(aa) * Number(z);	// 실제가격 * 수량
+		bb.innerText = sum;		// 해당 태그 안에 문자로 출력.
+</script>
+
+</html>

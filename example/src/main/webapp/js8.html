@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<!--
+		A : 고객명,아이디는 모두 필수로 입력 되어야합니다.
+		단, 개인정보 3자에 제공은 선택.
+		
+		이벤트 참여 버튼 클릭시 B파트 사용자에게 URI로 전달합니다.
+		
+		B 파트:
+		A파트에 넘어온 값을 출력시키면 됩니다. 단, 개인정보 3자에 제공(선택)에 체크 되있을 경우 해당 내용
+		에도 자동으로 체크되어야 하며, 체크아웃 상태 데이터가 넘어올경우 B파트에도 체크아웃 되어야 합니다.
+	-->
+<head>
+<meta charset="UTF-8">
+<title>URI + SPLIT - B파트 (실무)</title>
+</head>
+<!-- 192.168.110.224 -->
+<body>
+	고객명 : <span id="uname"></span><br/>
+	아이디 : <span id="uid"></span><br/>
+	<input type="checkbox" id="check" checked disabled/> 개인정보 3자에 제공 (선택)
+</body>
+
+<script>
+	var url = decodeURI(window.location.search);
+	var data1 = uri.split("&check=");
+	console.log(data1.length);	//check되면 2개, 안하면 1개	
+	
+	if(data1.length > 1){
+		document.getElementById("check").checked = true;		
+	}
+	
+	var data2 = data1[0].split("&uid=");
+	document.getElementById("uid").innerText = data2[1];
+	
+	var data3 = data1[0].split("?uname=");
+	document.getElementById("uname").innerText =data3[1];' 
+	
+	/*
+	var nmInput = document.getElementById("uname");
+	var idInput = document.getElementById("uid");
+	
+	var uri = decodeURI(window.location.search);
+	//console.log(uri);
+	var data = uri.split("&check=");
+	if(data1.length == 1){
+		//체크 X
+		var data2 = data[0].split("&uid=");
+		var resultnm = data2[0].split("?uname=");
+		nmInput.innerText =resultnm[1];
+		idInput.innerText = data2[1]
+		//nmInput.innerText = data[];
+	}else{
+		// 체크 O
+		var data2 = data[0].split("&uid=");
+		
+		idInput.innerText = data2[1];
+		
+		var name2 = data2[0].split("?uname=");
+		
+		nmInput.innerText= name2[1];
+		
+	}
+	*/
+	
+	
+</script>
+</html>

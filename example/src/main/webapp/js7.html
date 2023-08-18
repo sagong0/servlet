@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>(URI 활용법(데이터 받는 역할) -js.7.html)</title>
+</head>
+<body>
+	검색어: <div id="search"></div><br/>
+	카테고리: <div id="cate"></div><br/>
+</body>
+<script>
+	/*	// 데이터 값이 1개일 때
+	var uri = window.location.search;	// 파라미터 (URI)를 가져오는 역할
+	var data = uri.split("?search=");	// split: 단어를 기준으로 배열화 시키는 함수
+	var v = decodeURI(data[1]); 		//한글 , 특수문자 꺠짐을 복원 
+	console.log(v);
+	*/
+	
+	// 데이터 값이 2개 이상 일 때
+	var uri = decodeURI(window.location.search);
+	//console.log(uri); 
+	var data = uri.split("&cate=");
+	//console.log(data);
+	var data2 = data[0].split("?search=");
+	//console.log(data2);
+	document.getElementById("search").innerText =data2[1];
+	document.getElementById("cate").innerText = data[1];
+</script>
+</html>
