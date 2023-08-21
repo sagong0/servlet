@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	수량 <select onchange="cal(this.value)">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+	</select> <br/><br/>
+
+상품금액 : <span>10000</span>원<br/>
+최종금액 : <span id="total">30000</span>원
+
+<input type="hidden" id="money" value="10000"/>
+</body>
+
+<script>
+	function cal(val){
+		console.log(val);	// 수량 1,2,3,4,5
+		var ea = document.getElementById("money").value;	// 10000
+		var total = document.getElementById("total");
+		
+		var totalsum = Number(val) * Number(ea);
+		total.innerText = totalsum;
+	}
+</script>
+</html>

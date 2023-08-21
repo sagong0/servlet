@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>onclick-onchange, submit,click</title>
+</head>
+
+<script>
+	function zzz(n){
+		console.log(n);
+	}
+</script>
+
+<body>
+<select onchange="zzz(this.value)">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+</select>
+	
+<form id="f" method="post" action="http://www.naver.com" onclick="return abc();">
+	<input type="text">	
+	<input type="submit" value="클릭" />	<br/>		<!--onclick 필요x, 폼전체를 컨트롤-, form 태그 밖에 잇으면 폼 컨트롤 못함-->
+</form>
+	<input type="button" value="클릭" onclick="bbb()"/><!-- 폼 태그 밖에 있어도 폼 컨트롤 가능, 폼하나에 여러개 버튼가능. / 무조건 javascript같이 -->
+</body>
+<script>
+	function abc(){
+		alert("test");
+		f.submit();
+		return false;
+	}
+	
+	function bbb(){
+		f.submit();
+	}
+</script>
+
+</html>
