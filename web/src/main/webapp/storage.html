@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Storage 활용법</title>
+</head>
+<script>
+	// localStorage : 브라우저를 종료하더라도 지속으로 DATA 가지고 있음.
+	// sessionStorage : 브라우저를 종료시 데이터도 삭제됨.(휘발성)
+	var data = "홍길동";
+	var data2 = "홍길동2";
+	window.localStorage.setItem("username",data);
+	window.localStorage.setItem("username2",data);
+	var ea = window.localStorage.length;
+	console.log("ea"+ea);
+	
+	var dataload = window.localStorage.getItem("username");
+	console.log(dataload);
+	
+	// localStorage 데이터 삭제.
+	window.localStorage.setItem("username","");
+	window.localStorage.removeItem("username");		// key까지 삭제 (모두 삭제.)
+	
+	var data2 = "실버 회원";
+	/*
+	window.sessionStorage.setItem("userlevel",data2);
+	var dataload2 = window.sessionStorage.getItem("userlevel");
+	console.log(dataload2);
+	*/
+	
+</script>
+<body>
+
+</body>
+</html>

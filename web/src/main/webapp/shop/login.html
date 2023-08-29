@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
     <link rel="stylesheet" type="text/css" href="./login.css">
-    <script src="./join.js"></script>
+	<script src="./join.js?v=1" defer></script>
+	<!--
+		defer : HTML 코드를 모두 로드한 후 자바스크립트를 실행시킴 (지연)
+	 -->
 </head>
 <body>
     <div id="con">
@@ -29,7 +32,7 @@
         </label>
         
         <p style="text-align: left;">
-			<label><input type="checkbox" value="save">아이디 저장</label>
+			<label><input type="checkbox" id="saveid" value="save" onclick="id_save();">아이디 저장</label>
 		</p>
 
         <label>
