@@ -1,5 +1,19 @@
 package javatest;
 
+import java.util.*;
+
+public class work6 {
+   
+   public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+      System.out.println("회원 목록 : 홍길동,이순신,유관순,강감찬,장보고");
+      String name = sc.nextLine().intern();
+
+      box a = new box();
+      //a.f_method(name);
+      a.f_method(name);
+   }
+}
 /*
  * 숙제.
  * 추상클래스 + 중첩클래스를 이용하여 프로세서를 제작합니다.
@@ -17,9 +31,40 @@ package javatest;
  * 그 외에 사용자 이름을 입력시 "해당 사용자는 비회원 입니다." 라고 출력되도록 하시오.
  * */
 
-public class work6 {
-	public static void main(String[] args) {
+abstract class father{
+   abstract public void f_method(String name);
+}
 
+class box extends father{
+   
+   String name2 = "";
+   
+   @Override
+   public void f_method(String name) {
+	   this.name2 = name;
+	   new box2().box2();
+   }
+   
+   class box2{
+      
+      public box2() {
+         String name = box.this.name2;
+         
+         
+         if(name == "홍길동"|| name =="이순신" ||name =="유관순") {
+            System.out.println("일반 회원");
+         }
+         else if(name == "강감찬"|| name =="장보고") {
+            System.out.println("실버 회원");
+         }
+         else {
+            System.out.println("해당 사용자는 비회원 입니다.");
+         }
+      }
+
+	public void box2() {
+		// TODO Auto-generated method stub
+		
 	}
-
+   }
 }
