@@ -1,10 +1,15 @@
 package web;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -37,16 +42,55 @@ public class board2 extends HttpServlet {
 		System.out.println(file.getName());	// name값명
 		System.out.println(file.getSize());	// 파일 사이즈
 		System.out.println(file.getHeaderNames());
-		System.out.println(file.getContentType());	// 파일에 대한 속성
+		System.out.println(file.getContentType());	// 파일에 대한 속성 (이미지로만 되게할수잇)
 		System.out.println(file.getSubmittedFileName());	// 파일명
 		
 		String filenm =file.getSubmittedFileName().intern();
-		if(filenm =="") {
+		
+		// 날짜 . => 파일 업로드 같은 이름일 경우 덮어쓰는 현상을 막기 위해서 사용함.
+		Date time = new Date();
+		SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
+		String timetext = sf.format(time);
+		
+		// 첨부파일 용량
+		int filesize = (int) file.getSize();
+		
+		
+		String savepath = request.getServletContext().getRealPath("/board/upload/");
+		// 업로드시 사용하는 파일명.
+		String filename = timetext +"_"+ file.getSubmittedFileName();
+		// 실제 저장되는 형태.
+		String uploadfile = savepath + filename;
+		
+		if(filesize ==0) {
+			// 첨부파일이 없을 때의 SQL
 			System.out.println("첨부파일 없음");
 		}
 		else {
-			System.out.println("첨부파일 있음");
+			// 첨부파일 저장공간.
+			//[Stream 으로 첨부파일 처리]
+			InputStream is = file.getInputStream();	// 스트림으로 변환.
+			FileOutputStream fs = new FileOutputStream(uploadfile);
+			
+			
+			
+			// 첨부파일이 있을 때의 SQL
+			byte[] buf = new byte[is.available()];
+			int size = 0;
+			while((size = is.read(buf)) != -1) {
+				fs.write(buf,0,size);
+				fs.flush();
+			}
+			fs.close();
+			is.close();
 		}
+		// 경로지정(DB에 저장되는 경로와 같음.)
+		String dbfile = "./upload/"+filename;
+		
+		// View 로 출력 (view.jsp 전달.)
+		request.setAttribute("dbfile", dbfile);
+		RequestDispatcher ds = request.getRequestDispatcher("./view.jsp");
+		ds.forward(request, response);
 		
 		String content = request.getParameter("mcontent").intern();
 		
@@ -62,8 +106,7 @@ public class board2 extends HttpServlet {
 			try {
 				this.db = new dbconfig();
 				Connection con = this.db.dbinfo();
-				String sql = "insert into board values("
-						+"'0',?,?,?,?,?,now(),?);";
+				String sql = "insert into board values('0',?,?,?,?,?,now(),?);";
 				this.ps = con.prepareStatement(sql);
 				this.ps.setString(1, title);
 				this.ps.setString(2, writer);
@@ -89,6 +132,7 @@ public class board2 extends HttpServlet {
 			}
 			catch(Exception e) {
 				System.out.println("DB 오류 .. ㅜㅠ.ㅠㅜ.ㅜ.ㅜ.ㅜ.ㅜ.ㅜ");
+				System.out.println(e);
 			}
 		}
 	}

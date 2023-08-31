@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, inital-scale=1.0">
+<title>모바일 전용 웹페이지</title>
+</head>
+<body>
+[모바일 전용 input 형태]<br>
+텍스트🤞🤞1:<input type="text"><br>		<!-- 일반 입력(P,M) -->
+넘버2:<input type="number"><br>	<!-- 숫자만 입력(M) -->
+칼라3 : <input type="color"><br>	<!-- 색상선택(P,M) -->
+텔4 : <input type="tel"><br>		<!--전화번호(M)-->
+타임5 : <input type="time"><br>	<!--시간선택 (P,M)-->
+데이트6 : <input type="date"><br>	<!--날짜선택 (P,M)-->
+데이트타임7 : <input type="datetime-local"><br>	<!--날짜와 시간 동시에 입력 (P,M)-->
+위크8: <input type="week"><br> <!-- 주차 선택(P,M) ios에서 작동불능.-->
+이메일9: <input type="email"><br>	<!--이메일(M)-->
+range10 :<br>	<!--수량, 크기 범위 선택(P,M)-->
+<form oninput="sound2.value=parseInt(sound.value)">
+	 1<input type="range" id="sound" min="1" max="10">10<br>
+	 <output for="sound" name="sound2"></output>
+	 <br><br>
+</form>
+	 url11<input type="url"><br>	<!-- 도메인, 블로그 웹 경로(M)-->
+	 <br><br><br>
+	 <a href="tel:027222111">학원 고객센터 : 027222111</a>
+	 😘💖🤦‍♂️ 아파요 <br><br>
+	 
+	 입력12<input type="text" name="product" list="subject">
+	 <datalist id="subject">
+		 <option value="HTML">HTML</option>
+		 <option value="JSP">JSP</option>
+		 <option value="JS">JS</option>
+		 <option value="JAVA">JAVA</option>
+	 </datalist>
+	 
+</body>
+</html>

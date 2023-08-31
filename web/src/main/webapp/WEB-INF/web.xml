@@ -68,4 +68,8 @@
   	<url-pattern>/board/writeok.do</url-pattern>
   </servlet-mapping>
   
+  <session-config>
+  	<session-timeout>600</session-timeout>
+  </session-config>
+  
 </web-app>
