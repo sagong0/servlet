@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JS SetTimeout, SetInterval</title>
+</head>
+<script>
+	// 시간함수 변수가 필요함
+	// setTimeout : 1회성으로 해당 시간되었을 경우 호출 방식
+	var timer = 0;
+	function set1(){
+		console.log(timer);
+		timer++;
+		setTimeout(set1,1000);
+	}
+	setTimeout(set1,2000);	// 1000 = 1초	(1번만 실행함)
+
+	//setInterval : 한번 실행시 지속적으로 해당 시간마다 호출 방식
+	var timer2 =0;
+	function set2(){
+		//console.log(timer2);
+		timer2++;
+	}
+	setInterval(set2,2000);	// 계속 호출.
+		
+</script>
+<body>
+
+</body>
+</html>

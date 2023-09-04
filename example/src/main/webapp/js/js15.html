@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax + setInterval , setTimeout (최종편)</title>
+</head>
+<body>
+	<table border="1" id="news">
+		<thead>
+			<tr>
+				<td>뉴스 제목</td>
+				<td>언론사명</td>
+			</tr>				
+		</thead>
+		<tbody id="tbody">
+			
+		</tbody>
+		
+		
+	</table>
+</body>
+
+<script>
+	function ajax(){
+		var date = new Date().toString();
+		var req = new XMLHttpRequest();
+		
+		req.onreadystatechange = function(){
+			
+			//var news = document.getElementById("news");
+			
+			if(req.readyState==4) {
+				if(req.status ==200){
+					var newsdata = JSON.parse(this.response);
+					//console.log(newsdata);
+					
+					var w =0;
+					var html = document.getElementById("tbody");
+					html.innerHTML = ""; 	// html코드초기화
+					while(w < newsdata.length){
+						html.innerHTML += `
+						<tr>
+							<td>`+newsdata[w][0]+`</td>
+							<td>`+newsdata[w][1]+`</td>
+						</tr>						
+						`;
+						w++;
+					}
+				}
+				else{
+					console.log("통신오류 발생.!!");
+				}
+			}
+		}
+		
+		req.open("get","./news.json?v="+date);
+		req.send();
+}
+	setInterval(ajax, 3000);
+</script>
+
+</html>

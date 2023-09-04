@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Servlet + JSON + Ajax - 외부서버연계 (A파트)</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<th>지역명</th>
+			<th>국비지원 총 인원</th>
+			<th>미취업인원</th>
+			<th>취업인원</th>
+		</tr>
+	</table>
+</body>
+
+<script>
+	
+	var array;
+	function call(d){
+		console.log(d);
+		this.array = d;
+	}
+	
+	var aj = new XMLHttpRequest();
+	aj.onreadystatechange = function(){
+		if(aj.readyState ==4){
+			if(aj.status == 200){
+				array = this.response;
+				console.log(array);
+			}
+		}
+		else{
+			console.log("통신 오류 발생 !!");
+		}
+	}
+	
+	aj.open("GET","http://192.168.110.223:8081/web/job_data.do?key=hong&callback=call&v=1",true);
+	aj.send();
+	
+</script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Servlet + JSON + Ajax - ajaxdata.java와 연계 (RESTful API - key)</title>
+</head>
+<body>
+	<!--
+		Rest-API : 데이터를 주고 받기 위한 API 형태 json, xml 형태로 구분 되어짐, (get,post,put,petch,delete)
+		Restful-API : 보안키, 범위, 규칙에 따른 URL이 존재 합니다.
+		http://abc.co.kr/student
+	-->
+	<table border="1">
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>성격분석</th>
+			</tr>
+		</thead>
+		<tbody id="datalist">
+			
+		</tbody>
+	</table>
+</body>
+
+<script>
+	var aj = new XMLHttpRequest();
+	aj.onreadystatechange = function(){
+		if(aj.readyState == 4){
+			if(aj.status == 200){
+				var msg =this.response;
+				if(msg == "error"){
+					alert("서버접근 문제가 발생함");
+				}
+				else if(msg == "key_error"){
+					alert("보안키가 오류발생 하였습니다.");
+				}
+				else{
+					//console.log(msg);
+					var all_list = JSON.parse(msg);
+					var html = document.getElementById("datalist");
+					
+					all_list["user_list"].forEach(function(a,b){
+
+						html.innerHTML += `
+						<tr>
+							<td>`+a["user_name"]+`</td>
+							<td>`+a["analyze"]+`</td>
+						<tr>
+						`;
+
+					});
+				}
+			}
+			else{
+				console.log("통신 오류 발생!!");			
+			}
+		}
+	}
+	aj.open("GET","./ajaxdata.do?key=a123456");
+	aj.send();
+	
+</script>
+
+</html>
