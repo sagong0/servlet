@@ -20,7 +20,7 @@
 	var array;
 	function call(d){
 		console.log(d);
-		this.array = d;
+		this.array = d
 	}
 	
 	var aj = new XMLHttpRequest();
@@ -36,7 +36,7 @@
 		}
 	}
 	
-	aj.open("GET","http://192.168.110.223:8081/web/job_data.do?key=hong&callback=call&v=1",true);
+	aj.open("GET","http://192.168.110.223:8081/web/job_data.do?key=hong",true);
 	aj.send();
 	
 </script>
