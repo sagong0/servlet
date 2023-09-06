@@ -6,12 +6,15 @@
 </head>
 <body>
 	<table border="1">
-		<tr>
-			<th>지역명</th>
-			<th>국비지원 총 인원</th>
-			<th>미취업인원</th>
-			<th>취업인원</th>
-		</tr>
+		<thead>
+			<tr>
+				<th>지역명</th>
+				<th>국비지원 총 인원</th>
+				<th>미취업인원</th>
+				<th>취업인원</th>
+			</tr>			
+		</thead>
+		<tbody id="datalist"></tbody>
 	</table>
 </body>
 
@@ -28,7 +31,26 @@
 		if(aj.readyState ==4){
 			if(aj.status == 200){
 				array = this.response;
-				console.log(array);
+				if(array=="error"){
+					alert('서버 접근에 문제 발생');	
+				}else if(array=="key_error"){
+					alert('보안 키에 오류 발생');
+				}else{
+					var job_list = JSON.parse(array);
+					//console.log(job_list)
+					
+					var html= document.getElementById("datalist");
+					job_list["job_list"].forEach(function(a,b){
+						html.innerHTML +=`
+								<tr>
+									<td>`+a["total"]+`</td>
+									<td></td>
+								</tr>
+						`;
+												
+					});
+					
+				}
 			}
 		}
 		else{
